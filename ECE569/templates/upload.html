@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block content %}  
+
+        <div class="container">
+
+            <h1>Welcome to the ECE569 IoT Project</h1>
+
+
+          <!--Simple Form-->
+          <h2 class="my-4">Upload a file</h2>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <input type="file" name="upload" >
+                <br>
+                <button class="btn btn-dark my-4" value="local" name="msg" type="submit">Submit to local</button>
+                <button class="btn btn-dark my-4" value="cloud" name="msg" type="submit">Submit to cloud</button>
+                {% if messages %}              
+                    {% for message in messages %}
+                      <div class="alert alert-success">{{message}}</div>
+                    {% endfor %}               
+                {% endif %}
+          </form>
+
+          <!-- <form methos="post">
+            {% csrf_token %}
+            {{ form.post}}
+            <button type=submit>sub</button>
+
+          </form> -->
+
+          <!-- <h2 class="my-4">Upload a file to cloud</h2>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <input type="file" name="upload">
+                <br>
+                <button class="btn btn-dark my-4" type="submit">Submit</button>
+          </form> -->
+
+          <!--See Image Uploaded-->
+          <!--<h2 class="my-4">Movie Poster</h2>
+          <div class="row">
+            {% if file_url %}
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+              <img src="{{ file_url }}" class="img-fluid">
+              <br>
+              <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+            {% else %}
+            <p>No movies posters added.</p>
+            {% endif %}
+          </div>-->
+
+        <!--</div>-->
+        </div>
+
+{% endblock %}
