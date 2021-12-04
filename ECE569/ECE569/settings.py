@@ -149,58 +149,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# city_obj = FindCity()
-# city = city_obj.get_ip_location()
-# print(city)
-
-# my_ip = requests.get('https://api.ipify.org').text
-# # print(my_ip)
-# # //folder
-# # path = os.path.join(os.environ["HOMEPATH"], "Document")
-# # print(path)
-# # shutil.copy(txtName, os.path.join(os.environ["HOMEPATH"], "Desktop"))
-
-# def get_ip_location(my_ip):
-
-#     geolocation_api = "0e89983e41344f97a25ae1804602f0ac"
-#     # ip_address = "206.116.135.77"
-#     request_url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=' + geolocation_api + '&ip_address=' + my_ip
-#     response = requests.get(request_url)
-#     result = response.content.decode()
-#     result = json.loads(result)
-#     city = result['city']
-#     return city
-
-# City = get_ip_location(my_ip)
-# # print(City)
-
-# if city is False:
-#     MEDIA = False
-#     pass
-# else:
-# MEDIA = True
-
-#umcomment for folder storage
-# home = os.path.expanduser('~')
-# location = os.path.join(home, 'Documents')
-# folder_check = os.path.isdir(location)
-# path = os.path.join(location, city)
-
-# MEDIA_URL='/{city}/'
-# MEDIA_ROOT=os.path.join(location, city)
-
-# MEDIA_URL='/Langely/'
-# MEDIA_ROOT=os.path.join(location, 'Langely')
-
-
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_ACCESS_KEY_ID = "your key"
-AWS_SECRET_ACCESS_KEY= "your key"
-AWS_STORAGE_BUCKET_NAME = "bucket name"
+AWS_ACCESS_KEY_ID = "your api key"
+AWS_SECRET_ACCESS_KEY ="your api access key"
+AWS_STORAGE_BUCKET_NAME = "your bucket name"
 
 AWS_S3_FILE_OVERWRITE=False
 AWS_DEFAULT_ACL=None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 
