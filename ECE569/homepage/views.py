@@ -12,6 +12,7 @@ from django.contrib import messages
 class FindCity(object):
 
    def get_ip_location(self):
+      context = {}
       my_ip = requests.get('https://api.ipify.org').text
       # print(my_ip)
       geolocation_api = "your abstract api geolocation api key"
@@ -24,7 +25,8 @@ class FindCity(object):
       if city is not None:
          return city
       else:
-         return False
+         #return False
+         return render(requests, 'upload.html', context)
          # render('upload.html', {'status':True})
 
 def upload(request):

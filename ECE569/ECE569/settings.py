@@ -17,6 +17,7 @@ import requests
 # from requests import get
 import json
 import shutil
+
 # from homepage.views import FindCity
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'homepage',
     'storages',
    
