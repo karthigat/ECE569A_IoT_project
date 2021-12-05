@@ -15,7 +15,7 @@ class FindCity(object):
       context = {}
       my_ip = requests.get('https://api.ipify.org').text
       # print(my_ip)
-      geolocation_api = "your abstract api geolocation api key"
+      geolocation_api = "your api"
       # my_ip = "192.168.1.67"
       request_url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=' + geolocation_api + '&ip_address=' + my_ip
       response = requests.get(request_url)
@@ -25,26 +25,34 @@ class FindCity(object):
       if city is not None:
          return city
       else:
-         #return False
-         return render(requests, 'upload.html', context)
+         return 'True'
+  
+         # return render(requests, 'upload.html', context)
          # render('upload.html', {'status':True})
 
 def upload(request):
-   context = {}
+   context={}
    if request.method == 'POST':
+      print('1')
       uploaded_file = request.FILES['upload']
       value = request.POST.get("msg")
       if value == "local":
          city_obj = FindCity()
          city = city_obj.get_ip_location()
-         path = os.path.expanduser("~")
-         local_dir = os.path.join(path,"Documents")
-         folder_check = os.path.isdir(local_dir)
-         path = os.path.join(local_dir, city)
-         fs = FileSystemStorage(location=path)
-         # fs = FileSystemStorage(location=local_dir)
-         name = fs.save(uploaded_file.name, uploaded_file)        
-         messages.success(request, 'File saved successfully in Documents')
+         print(city)
+         context={'city':city}
+         if city is not 'True':
+
+            path = os.path.expanduser("~")
+            local_dir = os.path.join(path,"Documents")
+            folder_check = os.path.isdir(local_dir)
+            path = os.path.join(local_dir, city)
+            fs = FileSystemStorage(location=path)
+            # fs = FileSystemStorage(location=local_dir)
+            name = fs.save(uploaded_file.name, uploaded_file)        
+            messages.success(request, 'File saved successfully in Documents')
+         else:
+            messages.warning(request, 'City name not found and subit again')
       # context['url'] = fs.url(name)
 
       if value == "cloud":

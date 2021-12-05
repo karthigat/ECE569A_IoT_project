@@ -18,19 +18,22 @@
                    <input type="file" name="upload" >
                    <br>
                    <br>
+                   {% if city == "True" %}
+                   Enter your city name : <input type="text" size="3" >
+                 {% endif %}
+                  <br>
                    <button class="btn btn-dark my-4" value="local" name="msg" type="submit">Submit to local</button>
                    <br>
                    <button class="btn btn-dark my-4" value="cloud" name="msg" type="submit">Submit to cloud</button>
                    <br>
                    <br>
-                {% if city %}
-                  Enter your city name : <input type="text" size="3" >
-                {% endif %}
-                {% if messages %}              
+                   {% if messages %}              
                     {% for message in messages %}
                       <div class="alert alert-success">{{message}}</div>
                     {% endfor %}               
                 {% endif %}
+
+                
           </form>
 
 
