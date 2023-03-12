@@ -14,9 +14,7 @@ class FindCity(object):
    def get_ip_location(self):
       context = {}
       my_ip = requests.get('https://api.ipify.org').text
-      # print(my_ip)
       geolocation_api = "0e89983e41344f97a25ae1804602f0ac"
-      # my_ip = "192.168.1.67"
       request_url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=' + geolocation_api + '&ip_address=' + my_ip
       response = requests.get(request_url)
       print(type(response))
@@ -28,9 +26,6 @@ class FindCity(object):
       else:
          return 'True'
   
-         # return render(requests, 'upload.html', context)
-         # render('upload.html', {'status':True})
-
 def upload(request):
    context={}
    if request.method == 'POST':
@@ -44,7 +39,6 @@ def upload(request):
             folder_check = os.path.isdir(local_dir)
             path = os.path.join(local_dir, city)
             fs = FileSystemStorage(location=path)
-            # fs = FileSystemStorage(location=local_dir)
             name = fs.save(uploaded_file.name, uploaded_file)        
             messages.success(request, 'File saved successfully in Documents')
          if request.POST.get("get") == 'submit to cloud':
@@ -66,20 +60,13 @@ def upload(request):
                folder_check = os.path.isdir(local_dir)
                path = os.path.join(local_dir, city)
                fs = FileSystemStorage(location=path)
-               # fs = FileSystemStorage(location=local_dir)
                name = fs.save(uploaded_file.name, uploaded_file)        
                messages.success(request, 'File saved successfully in Documents')
             else:
                messages.warning(request, 'City name not found and subit again')
-         # context['url'] = fs.url(name)
 
          if value == "cloud":
             upload = UploadFile.objects.create(file=uploaded_file)        
             messages.success(request, 'File saved successfully in S3 bucket')
             
-      # upload = UploadFile.objects.all()
-      # fs = FileSystemStorage()
-      # name = fs.save(uploaded_file.name, uploaded_file)
-      # context['url'] = fs.url(name)
    return render(request, 'upload.html', context)
-      # return render(request, 'upload.html')
